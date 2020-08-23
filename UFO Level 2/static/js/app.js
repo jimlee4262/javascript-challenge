@@ -5,6 +5,13 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 function refresh_data(ufo_data){
+
+    // Deletes prior data within the table. Puts the original list back in order
+    var tb = document.querySelector('tbody');
+    while (tb.childNodes.length) {
+        tb.removeChild(tb.childNodes[0]);
+    }
+
     ufo_data.forEach(function(ufo) {
         // adding tr rows
         var row = tbody.append("tr");
@@ -17,7 +24,27 @@ function refresh_data(ufo_data){
     })
 }
 
+// function for the table to automatically populate when visiting the website
+function populatedata(maindata){
 
+    // Deletes prior data within the table. Puts the original list back in order
+    var tb = document.querySelector('tbody');
+    while (tb.childNodes.length) {
+        tb.removeChild(tb.childNodes[0]);
+    }
+    // loop through the data.js file
+    maindata.forEach(function(entry){
+        // add 1 cell per entry for datetime, city, state, country, shape, duration minutes, and comments
+        var row = tbody.append("tr");
+        Object.entries(entry).forEach(function([key, value]) {
+            // append a cell to tthe row for each value
+            var cell = row.append("td");
+            cell.text(value);
+        })
+    })
+}
+// automatically populate with the main data
+populatedata (tableData);
 
 // date/time
 var button = d3.select("#filter-btn-date");
@@ -119,5 +146,5 @@ resetbutton.on("click", resetdata);
 
 function resetdata(){
     d3.event.preventDefault();
-    tbody.html("");
+    populatedata(tableData);
 }
