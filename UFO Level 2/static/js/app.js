@@ -80,7 +80,7 @@ function cityEnter(){
     // prevent page from refreshing
     d3.event.preventDefault();
     var inputElement = cityinputField;
-    var inputValue = inputElement.property("value");
+    var inputValue = inputElement.property("value").toLowerCase();
     var filteredData = tableData.filter(ufodata => ufodata.city === inputValue);
     
     refresh_data(filteredData);
@@ -98,7 +98,7 @@ function stateEnter(){
     // prevent page from refreshing
     d3.event.preventDefault();
     var inputElement = stateinputField;
-    var inputValue = inputElement.property("value");
+    var inputValue = inputElement.property("value").toLowerCase();
     var filteredData = tableData.filter(ufodata => ufodata.state === inputValue);
     
     refresh_data(filteredData);
@@ -116,7 +116,7 @@ function countryEnter(){
     // prevent page from refreshing
     d3.event.preventDefault();
     var inputElement = countryinputField;
-    var inputValue = inputElement.property("value");
+    var inputValue = inputElement.property("value").toLowerCase();
     var filteredData = tableData.filter(ufodata => ufodata.country === inputValue);
     
     refresh_data(filteredData);
@@ -134,7 +134,7 @@ function shapeEnter(){
     // prevent page from refreshing
     d3.event.preventDefault();
     var inputElement = shapeinputField;
-    var inputValue = inputElement.property("value");
+    var inputValue = inputElement.property("value").toLowerCase();
     var filteredData = tableData.filter(ufodata => ufodata.shape === inputValue);
     
     refresh_data(filteredData);
